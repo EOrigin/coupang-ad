@@ -18,6 +18,8 @@ from login_manager import (
     save_session,
     load_session,
     dismiss_popups,
+    close_extra_popup_pages,
+    setup_page_popup_handlers,
     wait_and_detect_login,
 )
 
@@ -84,6 +86,7 @@ def main():
 
         def setup_page(pg):
             pg.on("response", handle_response)
+            setup_page_popup_handlers(pg)
 
         context.on("page", setup_page)
         page = context.pages[0] if context.pages else context.new_page()

@@ -24,6 +24,8 @@ from login_manager import (
     save_session,
     load_session,
     dismiss_popups,
+    close_extra_popup_pages,
+    setup_page_popup_handlers,
     wait_and_detect_login,
 )
 
@@ -46,11 +48,13 @@ def wait_for_login(page, context=None, timeout_sec=300, is_headless=False):
 
 
 def wait_table_loaded(page, timeout_ms=5000):
-    """React Table 로딩 스피너 및 오버레이(-loading -active) 대기"""
+    """React Table 로딩 스피너 및 오버레이(-loading -active) 대기 및 돌발 팝업 자동 닫기"""
+    dismiss_popups(page)
     try:
         page.locator('div.-loading.-active').wait_for(state='detached', timeout=timeout_ms)
     except Exception:
         pass
+    dismiss_popups(page)
     try:
         page.wait_for_timeout(300)
     except Exception:
@@ -59,10 +63,12 @@ def wait_table_loaded(page, timeout_ms=5000):
 
 def extract_products_from_campaign(page, campaign_name: str, min_cost: int, max_roas: float):
     """현재 열려있는 캠페인 상세 페이지에서 모든 페이지를 순회하며 조건에 맞는 상품을 추출"""
+    dismiss_popups(page)
     wait_table_loaded(page)
 
     # 100개씩 보기로 변경 시도
     try:
+        dismiss_popups(page)
         page_size_selector = 'select[aria-label="rows per page"]'
         if page.locator(page_size_selector).count() > 0:
             current_size = page.locator(page_size_selector).input_value()
@@ -71,12 +77,13 @@ def extract_products_from_campaign(page, campaign_name: str, min_cost: int, max_
                 page.wait_for_timeout(1000)
                 wait_table_loaded(page)
     except Exception:
-        pass
+        dismiss_popups(page)
 
     results = []
     page_num = 1
 
     while True:
+        dismiss_popups(page)
         wait_table_loaded(page)
 
         # 테이블 헤더 컬럼 인덱스 동적 탐색
@@ -190,6 +197,198 @@ def extract_products_from_campaign(page, campaign_name: str, min_cost: int, max_
     return results
 
 
+def discover_all_campaigns(page):
+    """
+    대시보드 캠페인 테이블의 모든 페이지를 순회하여
+    ON 상태인 캠페인과 OFF 상태인 캠페인을 식별 및 분류
+    """
+    print("\n[캠페인 목록 탐색] 전체 페이지를 순회하며 캠페인 및 ON/OFF 상태를 파악합니다...")
+    dismiss_popups(page)
+    wait_table_loaded(page)
+
+    # 1. 한 페이지당 최대(20개) 보기 설정
+    try:
+        dismiss_popups(page)
+        page_size_selector = 'select[aria-label="rows per page"]'
+        if page.locator(page_size_selector).count() > 0:
+            current_size = page.locator(page_size_selector).input_value()
+            if current_size != '20':
+                page.select_option(page_size_selector, '20')
+                page.wait_for_timeout(1000)
+                wait_table_loaded(page)
+    except Exception:
+        dismiss_popups(page)
+
+    all_campaigns = []
+    page_num = 1
+
+    while True:
+        dismiss_popups(page)
+        wait_table_loaded(page)
+
+        # 현재 페이지의 캠페인 행 정보 추출
+        camps_on_page = page.evaluate('''() => {
+            const rows = document.querySelectorAll('[data-test-id="pa-cam-dd-row"]');
+            const list = [];
+            rows.forEach(r => {
+                const nameEl = r.querySelector('[data-test-id="pa-cam-dd-name-value"]');
+                const switchBtn = r.querySelector('[data-test-id="pa-cam-dd-onoff-cell"] button[role="switch"]');
+                const statusEl = r.querySelector('[data-test-id="pa-cam-dd-status-cell"]');
+
+                if (!nameEl) return;
+                const name = nameEl.innerText.trim();
+                if (!name) return;
+
+                const isOn = switchBtn ? (
+                    switchBtn.getAttribute('aria-checked') === 'true' ||
+                    switchBtn.classList.contains('ant-switch-checked') ||
+                    switchBtn.innerText.includes('ON')
+                ) : false;
+
+                const status = statusEl ? statusEl.innerText.trim().replace(/\\s+/g, ' ') : '';
+                list.push({ name, isOn, status });
+            });
+            return list;
+        }''')
+
+        for c in camps_on_page:
+            c['table_page'] = page_num
+            all_campaigns.append(c)
+
+        # 페이징 상태 확인
+        pagination = page.evaluate('''() => {
+            const totalEl = document.querySelector('.-totalPages');
+            const totalPages = totalEl ? parseInt(totalEl.innerText.trim(), 10) : 1;
+            const inputEl = document.querySelector('.-pageJump input');
+            const curPage = inputEl ? parseInt(inputEl.value.trim(), 10) : 1;
+            const nextBtn = document.querySelector('div.-next button.-btn');
+            const nextContainer = document.querySelector('div.-next');
+            const isDisabled = !nextBtn || nextBtn.disabled || nextBtn.hasAttribute('disabled') ||
+                               (nextContainer && nextContainer.classList.contains('-disabled'));
+            return {
+                curPage: isNaN(curPage) ? 1 : curPage,
+                totalPages: isNaN(totalPages) ? 1 : totalPages,
+                canNext: !isDisabled
+            };
+        }''')
+
+        if not pagination.get('canNext') or pagination.get('curPage', 1) >= pagination.get('totalPages', 1):
+            break
+
+        # 다음 페이지로 이동
+        dismiss_popups(page)
+        clicked = page.evaluate('''() => {
+            const btn = document.querySelector('div.-next button.-btn');
+            if (btn && !btn.disabled) {
+                btn.click();
+                return true;
+            }
+            return false;
+        }''')
+        if not clicked:
+            break
+        page_num += 1
+        page.wait_for_timeout(1000)
+        wait_table_loaded(page)
+
+    return all_campaigns
+
+
+def open_campaign_detail(page, camp_name: str) -> bool:
+    """
+    대시보드 메인에서 특정 캠페인을 찾아 클릭하여 상세 페이지로 이동
+    페이지네이션이 필요한 경우 페이지를 넘겨가며 탐색
+    """
+    dismiss_popups(page)
+
+    # 1. 대시보드 메인으로 복귀 확인
+    if not page.url.endswith("/marketing/dashboard/sales"):
+        page.goto(DASHBOARD_URL)
+        dismiss_popups(page)
+        try:
+            page.wait_for_selector('[data-test-id="pa-cam-dd-row"]', timeout=15000)
+        except Exception:
+            dismiss_popups(page)
+            page.wait_for_selector('[data-test-id="pa-cam-dd-row"]', timeout=15000)
+        page.wait_for_timeout(1000)
+        dismiss_popups(page)
+
+    # 2. 20개씩 보기 유지
+    try:
+        page_size_selector = 'select[aria-label="rows per page"]'
+        if page.locator(page_size_selector).count() > 0:
+            current_size = page.locator(page_size_selector).input_value()
+            if current_size != '20':
+                dismiss_popups(page)
+                page.select_option(page_size_selector, '20')
+                page.wait_for_timeout(1000)
+                wait_table_loaded(page)
+    except Exception:
+        dismiss_popups(page)
+
+    def try_click_on_current_page():
+        dismiss_popups(page)
+        return page.evaluate('''(targetName) => {
+            const rows = document.querySelectorAll('[data-test-id="pa-cam-dd-row"]');
+            for (const r of rows) {
+                const nameEl = r.querySelector('[data-test-id="pa-cam-dd-name-value"]');
+                if (nameEl && nameEl.innerText.trim() === targetName) {
+                    const link = nameEl.closest('a') || nameEl;
+                    link.click();
+                    return true;
+                }
+            }
+            return false;
+        }''', camp_name)
+
+    # 현재 페이지에서 먼저 클릭 시도
+    if try_click_on_current_page():
+        dismiss_popups(page)
+        return True
+
+    # 현재 페이지에 없다면 1페이지로 돌아가서 처음부터 순차 탐색
+    pinfo = page.evaluate('''() => {
+        const totalEl = document.querySelector('.-totalPages');
+        const inputEl = document.querySelector('.-pageJump input');
+        return {
+            curPage: inputEl ? parseInt(inputEl.value.trim(), 10) : 1,
+            totalPages: totalEl ? parseInt(totalEl.innerText.trim(), 10) : 1
+        };
+    }''')
+    cur_p = pinfo.get('curPage', 1)
+    total_p = pinfo.get('totalPages', 1)
+
+    while cur_p > 1:
+        dismiss_popups(page)
+        prev_clicked = page.evaluate('''() => {
+            const btn = document.querySelector('div.-previous button.-btn');
+            if (btn && !btn.disabled) { btn.click(); return true; }
+            return false;
+        }''')
+        if not prev_clicked:
+            break
+        page.wait_for_timeout(800)
+        wait_table_loaded(page)
+        cur_p -= 1
+
+    for _ in range(total_p):
+        if try_click_on_current_page():
+            dismiss_popups(page)
+            return True
+        dismiss_popups(page)
+        next_clicked = page.evaluate('''() => {
+            const btn = document.querySelector('div.-next button.-btn');
+            if (btn && !btn.disabled) { btn.click(); return true; }
+            return false;
+        }''')
+        if not next_clicked:
+            break
+        page.wait_for_timeout(800)
+        wait_table_loaded(page)
+
+    return False
+
+
 def run_crawler(args):
     os.makedirs(args.output_dir, exist_ok=True)
     os.makedirs(args.profile_dir, exist_ok=True)
@@ -256,62 +455,97 @@ def run_crawler(args):
         # 대시보드 접근 및 로그인 확인
         load_session(context)
         page = wait_for_login(page, context, is_headless=args.headless)
+
+        # 팝업 자동 처리기 및 이벤트 리스너 등록
+        setup_page_popup_handlers(page)
         dismiss_popups(page)
+        close_extra_popup_pages(context, main_page=page)
         save_session(context)
 
-        # 스마트광고 캠페인 목록 조회 대기 (최대 3회 시도 및 팝업 닫기)
-        print("스마트광고 캠페인 목록을 확인하는 중...")
-        campaign_names = []
-        for attempt in range(3):
-            dismiss_popups(page)
+        # 크롤링 중 발생하는 새 팝업 창 자동 닫기 리스너 등록
+        def on_new_crawler_page(new_pg):
             try:
-                page.wait_for_selector('[data-test-id="pa-cam-dd-name-value"]', timeout=10000)
-                page.wait_for_timeout(1000)
-                campaign_els = page.locator('[data-test-id="pa-cam-dd-name-value"]').all()
-                campaign_names = [el.inner_text().strip() for el in campaign_els if el.inner_text().strip()]
-                if campaign_names:
-                    break
+                new_pg.wait_for_load_state("domcontentloaded", timeout=3000)
             except Exception:
-                dismiss_popups(page)
-                page.wait_for_timeout(2000)
+                pass
+            setup_page_popup_handlers(new_pg)
+            dismiss_popups(new_pg)
+            close_extra_popup_pages(context, main_page=page)
 
-        print(f"\n[발견된 스마트광고 캠페인 목록: 총 {len(campaign_names)}개]")
-        for idx, name in enumerate(campaign_names):
-            print(f"  {idx+1}. {name}")
-        print("-" * 65)
+        try:
+            context.on("page", on_new_crawler_page)
+        except Exception:
+            pass
+
+        # 대시보드 로딩 대기 (팝업 차단 대비 재시도)
+        dismiss_popups(page)
+        try:
+            page.wait_for_selector('[data-test-id="pa-cam-dd-row"]', timeout=15000)
+        except Exception:
+            dismiss_popups(page)
+            page.wait_for_selector('[data-test-id="pa-cam-dd-row"]', timeout=15000)
+
+        # 1. 모든 페이지를 순회하며 캠페인 목록 및 ON/OFF 상태 수집
+        all_campaigns = discover_all_campaigns(page)
+        on_campaigns = [c for c in all_campaigns if c['isOn']]
+        off_campaigns = [c for c in all_campaigns if not c['isOn']]
+
+        print("\n" + "=" * 65)
+        print(f" [캠페인 목록 분석 완료: 총 {len(all_campaigns)}개 발견]")
+        print(f" ■ 🟢 ON  상태 캠페인 : {len(on_campaigns)}개 (모두 분석 대상)")
+        for idx, c in enumerate(on_campaigns):
+            print(f"    {idx+1}. {c['name']} (상태: {c['status']})")
+        print(f" ■ ⚪ OFF 상태 캠페인 : {len(off_campaigns)}개 (제외됨)")
+        for idx, c in enumerate(off_campaigns):
+            print(f"    - {c['name']}")
+        print("=" * 65)
+
+        if not on_campaigns:
+            print("\n[안내] 현재 ON 상태인 캠페인이 없습니다. 크롤링을 종료합니다.\n")
+            if browser_managed_by_us:
+                context.close()
+            return
 
         all_results_by_campaign = {}
         all_option_ids = []
         total_matched = 0
 
-        # 캠페인별 순회
-        for idx, camp_name in enumerate(campaign_names):
-            print(f"\n[{idx+1}/{len(campaign_names)}] 캠페인 처리 중: '{camp_name}'")
+        # 2. ON 상태인 모든 캠페인 순회 및 분석
+        for idx, camp_info in enumerate(on_campaigns):
+            camp_name = camp_info['name']
+            print(f"\n[{idx+1}/{len(on_campaigns)}] 🟢 ON 캠페인 분석 진행 중: '{camp_name}'")
             try:
-                # 대시보드 메인으로 복귀 확인
-                if not page.url.endswith("/marketing/dashboard/sales"):
-                    page.goto(DASHBOARD_URL)
-                    page.wait_for_selector('[data-test-id="pa-cam-dd-name-value"]', timeout=15000)
-                    page.wait_for_timeout(1500)
-
-                # 해당 캠페인 클릭
-                target = page.locator('[data-test-id="pa-cam-dd-name-value"]').filter(has_text=camp_name).first
-                target.click()
-
-                try:
-                    page.wait_for_selector('.rt-tbody', timeout=15000)
-                    page.wait_for_timeout(1500)
-                except Exception:
-                    print("    [안내] 상품 목록이 없거나 로딩되지 않았습니다.")
+                dismiss_popups(page)
+                close_extra_popup_pages(context, main_page=page)
+                success = open_campaign_detail(page, camp_name)
+                if not success:
+                    # 팝업 가로막힘 대비 팝업 정리 후 1회 재시도
+                    dismiss_popups(page)
+                    success = open_campaign_detail(page, camp_name)
+                if not success:
+                    print(f"    [오류] 캠페인 '{camp_name}' 링크를 찾거나 클릭할 수 없습니다.")
                     all_results_by_campaign[camp_name] = []
                     continue
+
+                try:
+                    dismiss_popups(page)
+                    page.wait_for_selector('.rt-tbody', timeout=15000)
+                    page.wait_for_timeout(1000)
+                except Exception:
+                    dismiss_popups(page)
+                    try:
+                        page.wait_for_selector('.rt-tbody', timeout=5000)
+                    except Exception:
+                        print("    [안내] 상품 목록이 없거나 로딩되지 않았습니다.")
+                        all_results_by_campaign[camp_name] = []
+                        continue
 
                 # 상품 추출
                 matched = extract_products_from_campaign(page, camp_name, args.min_cost, args.max_roas)
                 all_results_by_campaign[camp_name] = matched
                 total_matched += len(matched)
 
-                print(f"    -> 조건 만족 상품: {len(matched)}개")
+                print(f"    => '{camp_name}' 분석 완료: 조건 만족 상품 {len(matched)}개")
                 for item in matched:
                     all_option_ids.append(item['option_id'])
                     print(f"       • [ID: {item['option_id']}] {item['ad_cost']:,}원 | ROAS: {item['roas']:.2f}% | {item['product_name'][:35]}")

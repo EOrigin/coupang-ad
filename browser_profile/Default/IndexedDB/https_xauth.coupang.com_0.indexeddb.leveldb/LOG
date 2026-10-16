@@ -1,36 +1,26 @@
-2026/10/14-09:53:35.454 4551 Reusing MANIFEST /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_xauth.coupang.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/10/14-09:53:35.454 4551 Recovering log #107
-2026/10/14-09:53:35.455 4551 Reusing old log /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_xauth.coupang.com_0.indexeddb.leveldb/000107.log 
-2026/10/14-09:53:35.455 4551 Delete type=2 #106
-2026/10/14-09:53:35.886 454e Level-0 table #112: started
-2026/10/14-09:53:35.887 454e Level-0 table #112: 8383 bytes OK
-2026/10/14-09:53:35.890 454e Delete type=0 #107
-2026/10/14-09:53:35.890 454e Manual compaction at level-0 from '\x00!\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00"\x00\x00\x00' @ 0 : 0; will stop at '\x00!\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4626 : 1
-2026/10/14-09:53:35.890 454e Compacting 1@0 + 1@1 files
-2026/10/14-09:53:35.895 454e Generated table #113@0: 497 keys, 105112 bytes
-2026/10/14-09:53:35.895 454e Compacted 1@0 + 1@1 files => 105112 bytes
-2026/10/14-09:53:35.898 454e compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/10/14-09:53:35.898 454e Delete type=2 #112
-2026/10/14-09:53:35.898 454e Manual compaction at level-0 from '\x00!\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4626 : 1 .. '\x00"\x00\x00\x00' @ 0 : 0; will stop at (end)
-2026/10/14-09:53:37.763 454e Level-0 table #115: started
-2026/10/14-09:53:37.766 454e Level-0 table #115: 130533 bytes OK
-2026/10/14-09:53:37.767 454e Delete type=0 #111
-2026/10/14-09:53:37.767 454e Delete type=2 #109
-2026/10/14-09:53:37.767 454e Manual compaction at level-0 from '\x00"\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00#\x00\x00\x00' @ 0 : 0; will stop at '\x00"\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4766 : 1
-2026/10/14-09:53:37.768 454e Compacting 1@0 + 1@1 files
-2026/10/14-09:53:37.771 454e Generated table #116@0: 524 keys, 181601 bytes
-2026/10/14-09:53:37.771 454e Compacted 1@0 + 1@1 files => 181601 bytes
-2026/10/14-09:53:37.773 454e compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/10/14-09:53:37.773 454e Delete type=2 #115
-2026/10/14-09:53:37.773 454e Manual compaction at level-0 from '\x00"\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4766 : 1 .. '\x00#\x00\x00\x00' @ 0 : 0; will stop at (end)
-2026/10/14-09:53:41.040 454f Level-0 table #118: started
-2026/10/14-09:53:41.041 454f Level-0 table #118: 15905 bytes OK
-2026/10/14-09:53:41.044 454f Delete type=2 #113
-2026/10/14-09:53:41.044 454f Delete type=0 #114
-2026/10/14-09:53:41.044 454e Manual compaction at level-0 from '\x00#\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00$\x00\x00\x00' @ 0 : 0; will stop at '\x00#\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4926 : 1
-2026/10/14-09:53:41.044 454e Compacting 1@0 + 1@1 files
-2026/10/14-09:53:41.049 454e Generated table #119@0: 561 keys, 184853 bytes
-2026/10/14-09:53:41.049 454e Compacted 1@0 + 1@1 files => 184853 bytes
-2026/10/14-09:53:41.050 454e compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/10/14-09:53:41.050 454e Delete type=2 #118
-2026/10/14-09:53:41.051 454e Manual compaction at level-0 from '\x00#\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4926 : 1 .. '\x00$\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/10/16-11:23:40.291 100c4 Reusing MANIFEST /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_xauth.coupang.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/10/16-11:23:40.291 100c4 Recovering log #117
+2026/10/16-11:23:40.292 100c4 Reusing old log /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_xauth.coupang.com_0.indexeddb.leveldb/000117.log 
+2026/10/16-11:23:40.292 100c4 Delete type=2 #116
+2026/10/16-11:23:40.680 100c4 Manual compaction at level-0 from '\x00$\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00%\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/10/16-11:23:42.431 100c2 Level-0 table #122: started
+2026/10/16-11:23:42.434 100c2 Level-0 table #122: 135637 bytes OK
+2026/10/16-11:23:42.436 100c2 Delete type=0 #117
+2026/10/16-11:23:42.436 100c1 Manual compaction at level-0 from '\x00%\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00&\x00\x00\x00' @ 0 : 0; will stop at '\x00%\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 5181 : 1
+2026/10/16-11:23:42.436 100c1 Compacting 1@0 + 1@1 files
+2026/10/16-11:23:42.440 100c1 Generated table #123@0: 583 keys, 235794 bytes
+2026/10/16-11:23:42.440 100c1 Compacted 1@0 + 1@1 files => 235794 bytes
+2026/10/16-11:23:42.442 100c1 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/10/16-11:23:42.442 100c1 Delete type=2 #122
+2026/10/16-11:23:42.442 100c1 Manual compaction at level-0 from '\x00%\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 5181 : 1 .. '\x00&\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/10/16-11:23:47.693 100c2 Level-0 table #125: started
+2026/10/16-11:23:47.694 100c2 Level-0 table #125: 18228 bytes OK
+2026/10/16-11:23:47.696 100c2 Delete type=2 #119
+2026/10/16-11:23:47.696 100c2 Delete type=0 #121
+2026/10/16-11:23:47.696 100c1 Manual compaction at level-0 from '\x00&\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00'\x00\x00\x00' @ 0 : 0; will stop at '\x00&\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 5346 : 1
+2026/10/16-11:23:47.696 100c1 Compacting 1@0 + 1@1 files
+2026/10/16-11:23:47.701 100c1 Generated table #126@0: 589 keys, 240862 bytes
+2026/10/16-11:23:47.701 100c1 Compacted 1@0 + 1@1 files => 240862 bytes
+2026/10/16-11:23:47.703 100c1 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/10/16-11:23:47.703 100c1 Delete type=2 #125
+2026/10/16-11:23:47.703 100c1 Manual compaction at level-0 from '\x00&\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 5346 : 1 .. '\x00'\x00\x00\x00' @ 0 : 0; will stop at (end)
