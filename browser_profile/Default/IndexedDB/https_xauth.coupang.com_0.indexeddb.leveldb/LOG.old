@@ -1,0 +1,25 @@
+2026/10/13-10:21:07.314 76e8 Reusing MANIFEST /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_xauth.coupang.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/10/13-10:21:07.314 76e8 Recovering log #100
+2026/10/13-10:21:07.314 76e8 Reusing old log /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_xauth.coupang.com_0.indexeddb.leveldb/000100.log 
+2026/10/13-10:21:07.314 76e8 Delete type=2 #99
+2026/10/13-10:21:07.692 76e8 Level-0 table #105: started
+2026/10/13-10:21:07.694 76e8 Level-0 table #105: 8463 bytes OK
+2026/10/13-10:21:07.695 76e8 Delete type=0 #100
+2026/10/13-10:21:07.696 76e8 Manual compaction at level-0 from '\x00\x1f\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00 \x00\x00\x00' @ 0 : 0; will stop at '\x00\x1f\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4341 : 1
+2026/10/13-10:21:07.696 76e8 Compacting 1@0 + 1@1 files
+2026/10/13-10:21:07.699 76e8 Generated table #106@0: 488 keys, 99356 bytes
+2026/10/13-10:21:07.699 76e8 Compacted 1@0 + 1@1 files => 99356 bytes
+2026/10/13-10:21:07.701 76e8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/10/13-10:21:07.701 76e8 Delete type=2 #105
+2026/10/13-10:21:07.701 76e8 Manual compaction at level-0 from '\x00\x1f\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4341 : 1 .. '\x00 \x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/10/13-10:21:13.430 76e8 Level-0 table #108: started
+2026/10/13-10:21:13.431 76e8 Level-0 table #108: 18446 bytes OK
+2026/10/13-10:21:13.433 76e8 Delete type=2 #102
+2026/10/13-10:21:13.433 76e8 Delete type=0 #104
+2026/10/13-10:21:13.433 76e8 Manual compaction at level-0 from '\x00 \x00\x00\x00' @ 72057594037927935 : 1 .. '\x00!\x00\x00\x00' @ 0 : 0; will stop at '\x00 \x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4506 : 1
+2026/10/13-10:21:13.433 76e8 Compacting 1@0 + 1@1 files
+2026/10/13-10:21:13.436 76e8 Generated table #109@0: 494 keys, 104506 bytes
+2026/10/13-10:21:13.436 76e8 Compacted 1@0 + 1@1 files => 104506 bytes
+2026/10/13-10:21:13.437 76e8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/10/13-10:21:13.438 76e8 Delete type=2 #108
+2026/10/13-10:21:13.438 76e8 Manual compaction at level-0 from '\x00 \x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 4506 : 1 .. '\x00!\x00\x00\x00' @ 0 : 0; will stop at (end)

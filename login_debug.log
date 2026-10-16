@@ -1,0 +1,41 @@
+=== Coupang Login Live Debug Log ===
+[2026-10-12 14:41:18] Playwright 브라우저를 실행합니다 (화면 표시 모드)...
+[2026-10-12 14:41:18] 프로필 경로: /home/jmjeans/projects/coupang-ad/browser_profile
+[2026-10-12 14:41:19] 신규 Chromium 브라우저 창을 띄웠습니다.
+[2026-10-12 14:41:19] >> [새 탭 감지] URL: about:blank
+[2026-10-12 14:41:19] 초기 페이지 이동 시작: https://advertising.coupang.com/user/login?_cap_client=WING&returnUrl=%2Fmarketing%2Fdashboard%2Fsales
+[2026-10-12 14:41:19] >> [탭 네비게이션] URL: https://xauth.coupang.com/auth/realms/seller/protocol/openid-connect/auth?client_id=wing-compat&response_type=code&redirect_uri=https://advertising.coupang.com/keycloak_callback&state=9fcMiiw0aW_Zdp60jIBuCJTN8Q_N_DuV4JGQRslig8k&code_challenge=6AkKRTcjDerGjocUnSgEHAqjf8MB-rv5MQG9QXnbOug&code_challenge_method=S256&scope=openid%20phone%20web-origins%20profile%20roles%20address%20microprofile-jwt%20email
+[2026-10-12 14:41:19] 
+============================================================
+[2026-10-12 14:41:19] ★ 브라우저가 열렸습니다. 사용자님, 브라우저 창에서 로그인을 진행해 주세요! ★
+[2026-10-12 14:41:19] 매 2초마다 모든 열린 탭의 URL, 타이틀, 로그인 감지 상태를 실시간 기록합니다.
+[2026-10-12 14:41:19] ============================================================
+
+[2026-10-12 14:41:20] --- [상태 체크: 열린 탭 총 1개] ---
+[2026-10-12 14:41:20] [탭 1] URL: https://xauth.coupang.com/auth/realms/seller/protocol/openid-connect/auth?client_id=wing-compat&response_type=code&redirect_uri=https://advertising.coupang.com/keycloak_callback&state=9fcMiiw0aW_Zdp60jIBuCJTN8Q_N_DuV4JGQRslig8k&code_challenge=6AkKRTcjDerGjocUnSgEHAqjf8MB-rv5MQG9QXnbOug&code_challenge_method=S256&scope=openid%20phone%20web-origins%20profile%20roles%20address%20microprofile-jwt%20email | Title: Sign in to seller
+        진단: 도메인: 광고센터 | 광고로그인=False (로그인화면여부=True, 대시보드경로=False, 캠페인셀렉터=False, 테이블=False)
+[2026-10-12 14:41:22] --- [상태 체크: 열린 탭 총 1개] ---
+[2026-10-12 14:41:22] [탭 1] URL: https://xauth.coupang.com/auth/realms/seller/protocol/openid-connect/auth?client_id=wing-compat&response_type=code&redirect_uri=https://advertising.coupang.com/keycloak_callback&state=9fcMiiw0aW_Zdp60jIBuCJTN8Q_N_DuV4JGQRslig8k&code_challenge=6AkKRTcjDerGjocUnSgEHAqjf8MB-rv5MQG9QXnbOug&code_challenge_method=S256&scope=openid%20phone%20web-origins%20profile%20roles%20address%20microprofile-jwt%20email | Title: Sign in to seller
+        진단: 도메인: 광고센터 | 광고로그인=False (로그인화면여부=True, 대시보드경로=False, 캠페인셀렉터=False, 테이블=False)
+[2026-10-12 14:41:24] --- [상태 체크: 열린 탭 총 1개] ---
+[2026-10-12 14:41:24] [탭 1] URL: https://xauth.coupang.com/auth/realms/seller/protocol/openid-connect/auth?client_id=wing-compat&response_type=code&redirect_uri=https://advertising.coupang.com/keycloak_callback&state=9fcMiiw0aW_Zdp60jIBuCJTN8Q_N_DuV4JGQRslig8k&code_challenge=6AkKRTcjDerGjocUnSgEHAqjf8MB-rv5MQG9QXnbOug&code_challenge_method=S256&scope=openid%20phone%20web-origins%20profile%20roles%20address%20microprofile-jwt%20email | Title: Sign in to seller
+        진단: 도메인: 광고센터 | 광고로그인=False (로그인화면여부=True, 대시보드경로=False, 캠페인셀렉터=False, 테이블=False)
+[2026-10-12 14:41:26] --- [상태 체크: 열린 탭 총 1개] ---
+[2026-10-12 14:41:28] >> [탭 네비게이션] URL: https://advertising.coupang.com/marketing/dashboard/sales?_cap_client=WING
+[2026-10-12 14:41:28] [탭 1] URL: https://xauth.coupang.com/auth/realms/seller/protocol/openid-connect/auth?client_id=wing-compat&response_type=code&redirect_uri=https://advertising.coupang.com/keycloak_callback&state=9fcMiiw0aW_Zdp60jIBuCJTN8Q_N_DuV4JGQRslig8k&code_challenge=6AkKRTcjDerGjocUnSgEHAqjf8MB-rv5MQG9QXnbOug&code_challenge_method=S256&scope=openid%20phone%20web-origins%20profile%20roles%20address%20microprofile-jwt%20email | Title: Loading https://xauth.coupang.com/auth/realms/seller/login-actions/authenticate?session_code=Yx0SAFp6iSH9L0Xl1lpdmBLTf8MsaeIQP49azUrLVJs&execution=f727c963-927f-47de-9e88-0c2bcf0a3627&client_id=wing-compat&tab_id=6-L-avfK_Qo&client_data=eyJydSI6Imh0dHBzOi8vYWR2ZXJ0aXNpbmcuY291cGFuZy5jb20va2V5Y2xvYWtfY2FsbGJhY2siLCJydCI6ImNvZGUiLCJzdCI6IjlmY01paXcwYVdfWmRwNjBqSUJ1Q0pUTjhRX05fRHVWNEpHUVJzbGlnOGsifQ&kc_locale=en
+        진단: 도메인: 광고센터 | 광고로그인=False (로그인화면여부=True, 대시보드경로=False, 캠페인셀렉터=False, 테이블=False)
+[2026-10-12 14:41:28] 
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+[2026-10-12 14:41:28] ★★ [성공] 쿠팡 광고 대시보드 로그인이 정상 감지되었습니다! ★★
+[2026-10-12 14:41:28] 감지된 최종 URL: https://advertising.coupang.com/marketing/dashboard/sales?_cap_client=WING
+[2026-10-12 14:41:28] 감지된 페이지 타이틀: Coupang Ads Center
+[2026-10-12 14:41:28] ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
+[2026-10-12 14:41:28] 매출 성장 대시보드로 이동 시도: https://advertising.coupang.com/marketing/dashboard/sales
+[2026-10-12 14:41:28] >> [탭 네비게이션] URL: https://advertising.coupang.com/marketing/dashboard/sales?_cap_client=WING
+[2026-10-12 14:41:29] >> [탭 네비게이션] URL: https://advertising.coupang.com/marketing/dashboard/sales
+[2026-10-12 14:41:29] >> [탭 네비게이션] URL: https://advertising.coupang.com/marketing/dashboard/sales
+[2026-10-12 14:41:31] 이동 후 최종 URL: https://advertising.coupang.com/marketing/dashboard/sales
+[2026-10-12 14:41:31] 로그인 세션 저장을 위해 3초 대기합니다...
+[2026-10-12 14:41:34] 검증 완료! 브라우저를 닫고 종료합니다.
+[2026-10-12 14:41:34] 스크립트 실행 완료.

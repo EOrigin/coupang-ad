@@ -1,0 +1,21 @@
+{
+  "name": "coupang-ad-crawler",
+  "version": "1.0.0",
+  "description": "쿠팡 광고(AI 스마트광고) 상품 옵션ID 크롤러",
+  "main": "coupang_ad_crawler.py",
+  "scripts": {
+    "start": "npm run crawl",
+    "crawl": "./run.sh",
+    "crawl:headless": "./run.sh --headless",
+    "crawl:bg": "xvfb-run -a ./run.sh",
+    "login": ".venv/bin/python launch_browser.py"
+  },
+  "keywords": [
+    "coupang",
+    "crawler",
+    "playwright",
+    "advertising"
+  ],
+  "author": "",
+  "license": "ISC"
+}

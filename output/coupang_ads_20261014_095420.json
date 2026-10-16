@@ -1,0 +1,202 @@
+{
+  "테스트": [
+    {
+      "campaign": "테스트",
+      "option_id": "94605222923",
+      "product_name": "니어샵 여성 심플 바스락 크롭 바람막이 + 카고 롱 스커트 상하의 트레이닝 세트, 베이지, L-XL",
+      "ad_cost": 37294,
+      "roas": 464.95,
+      "sales": 173400
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "95086909709",
+      "product_name": "니어샵 여성 하이웨스트 포멀 옆트임 스판 H라인 슬릿 롱 스커트, 차콜, S-M",
+      "ad_cost": 28628,
+      "roas": 403.1,
+      "sales": 115400
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94775604314",
+      "product_name": "니어샵 여성 빅사이즈 롱기장 벌룬핏 코튼 와이드 팬츠 면바지, 베이지, L",
+      "ad_cost": 21079,
+      "roas": 127.62,
+      "sales": 26900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94994033098",
+      "product_name": "니어샵 여성 하이웨스트 빈티지 데미지 데님 와이드 팬츠, M, 중청",
+      "ad_cost": 9618,
+      "roas": 300.48,
+      "sales": 28900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94605222924",
+      "product_name": "니어샵 여성 심플 바스락 크롭 바람막이 + 카고 롱 스커트 상하의 트레이닝 세트, 베이지, S-M",
+      "ad_cost": 9271,
+      "roas": 0.0,
+      "sales": 0
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "95376729085",
+      "product_name": "니어샵 여성 투웨이 카펜터 카고 벌룬 와이드 팬츠, 카키, 숏 L-XL",
+      "ad_cost": 8572,
+      "roas": 302.15,
+      "sales": 25900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94994042406",
+      "product_name": "니어샵 여성 나그랑 맨투맨 + 스판 밴딩 롱스커트 트레이닝 세트, 블랙, S-M",
+      "ad_cost": 7885,
+      "roas": 353.84,
+      "sales": 27900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94605222920",
+      "product_name": "니어샵 여성 심플 바스락 크롭 바람막이 + 카고 롱 스커트 상하의 트레이닝 세트, 핑크, 2XL",
+      "ad_cost": 7411,
+      "roas": 0.0,
+      "sales": 0
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94994042409",
+      "product_name": "니어샵 여성 나그랑 맨투맨 + 스판 밴딩 롱스커트 트레이닝 세트, 그레이, S-M",
+      "ad_cost": 7148,
+      "roas": 390.32,
+      "sales": 27900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94994042407",
+      "product_name": "니어샵 여성 나그랑 맨투맨 + 스판 밴딩 롱스커트 트레이닝 세트, 그레이, L-XL",
+      "ad_cost": 7135,
+      "roas": 391.03,
+      "sales": 27900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "95086909710",
+      "product_name": "니어샵 여성 하이웨스트 포멀 옆트임 스판 H라인 슬릿 롱 스커트, 블랙, L-XL",
+      "ad_cost": 6759,
+      "roas": 0.0,
+      "sales": 0
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "94993408982",
+      "product_name": "니어샵 여성 나그랑 맨투맨 + 스판 밴딩 롱스커트 트레이닝 세트, 블랙, L-XL",
+      "ad_cost": 6455,
+      "roas": 0.0,
+      "sales": 0
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "95204470984",
+      "product_name": "니어샵 여성 베이직 크롭 워싱 데님 청자켓, 흑청, FREE",
+      "ad_cost": 6048,
+      "roas": 510.91,
+      "sales": 30900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "95085875611",
+      "product_name": "니어샵 여성 하이웨스트 포멀 옆트임 스판 H라인 슬릿 롱 스커트, 블랙, S-M",
+      "ad_cost": 5639,
+      "roas": 335.17,
+      "sales": 18900
+    },
+    {
+      "campaign": "테스트",
+      "option_id": "93993327709",
+      "product_name": "니어샵 여성 융털기모 코듀로이 스판 절개 H라인 뒷트임 롱 스커트, 블랙, L",
+      "ad_cost": 5240,
+      "roas": 0.0,
+      "sales": 0
+    }
+  ],
+  "26SS 여성": [
+    {
+      "campaign": "26SS 여성",
+      "option_id": "95734111112",
+      "product_name": "니어샵 여성 3단기장 숏/기본/롱 와이드 스판 밴딩 슬랙스 팬츠, 블랙, 숏 L-XL",
+      "ad_cost": 5665,
+      "roas": 596.65,
+      "sales": 33800
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "95781956834",
+      "product_name": "니어샵 여성 3단기장 숏/기본/롱 커스텀 롱부츠컷 스판 밴딩 슬랙스 팬츠, 블랙, 숏 L-XL",
+      "ad_cost": 6256,
+      "roas": 270.14,
+      "sales": 16900
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "94775329688",
+      "product_name": "니어샵 여성 숏/롱 2단기장 트레이닝 세트 나그랑 맨투맨 + 핀턱 밴딩 스판 와이드 팬츠, 블랙, 숏 S-M",
+      "ad_cost": 43234,
+      "roas": 580.79,
+      "sales": 251100
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "94880368684",
+      "product_name": "니어샵 여성 나그랑 맨투맨 + 스판 밴딩 와이드 팬츠 트레이닝 세트, 블랙, L-XL",
+      "ad_cost": 17649,
+      "roas": 350.16,
+      "sales": 61800
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "95376729084",
+      "product_name": "니어샵 여성 투웨이 카펜터 카고 벌룬 와이드 팬츠, 블랙, 숏 S-M",
+      "ad_cost": 5518,
+      "roas": 469.37,
+      "sales": 25900
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "95376729083",
+      "product_name": "니어샵 여성 투웨이 카펜터 카고 벌룬 와이드 팬츠, 카키, 숏 S-M",
+      "ad_cost": 45318,
+      "roas": 171.46,
+      "sales": 77700
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "95630668147",
+      "product_name": "니어샵 여성 2단기장 숏/롱 벌룬핏 와이드 트레이닝 팬츠, 블랙, 숏 L-XL",
+      "ad_cost": 5046,
+      "roas": 473.64,
+      "sales": 23900
+    },
+    {
+      "campaign": "26SS 여성",
+      "option_id": "94775340997",
+      "product_name": "니어샵 여성 코튼 5부 와이드 버뮤다 팬츠 반바지, 블랙, M",
+      "ad_cost": 11658,
+      "roas": 205.01,
+      "sales": 23900
+    }
+  ],
+  "26SS 남자": [
+    {
+      "campaign": "26SS 남자",
+      "option_id": "95176245043",
+      "product_name": "니어샵 남자 2단기장 절개 벌룬 트레이닝 와이드 팬츠, 백멜란지, 롱 2XL",
+      "ad_cost": 48692,
+      "roas": 492.48,
+      "sales": 239800
+    }
+  ],
+  "신상 테스트": [],
+  "25겨울시즌": []
+}

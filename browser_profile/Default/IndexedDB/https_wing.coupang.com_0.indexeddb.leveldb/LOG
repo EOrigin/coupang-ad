@@ -1,0 +1,25 @@
+2026/10/12-13:39:24.285 19949 Reusing MANIFEST /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_wing.coupang.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/10/12-13:39:24.285 19949 Recovering log #19
+2026/10/12-13:39:24.285 19949 Reusing old log /home/jmjeans/projects/coupang-ad/browser_profile/Default/IndexedDB/https_wing.coupang.com_0.indexeddb.leveldb/000019.log 
+2026/10/12-13:39:24.285 19949 Delete type=2 #18
+2026/10/12-13:39:25.671 19949 Level-0 table #24: started
+2026/10/12-13:39:25.673 19949 Level-0 table #24: 11500 bytes OK
+2026/10/12-13:39:25.675 19949 Delete type=0 #19
+2026/10/12-13:39:25.675 19949 Manual compaction at level-0 from '\x00\x09\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x09\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 1361 : 1
+2026/10/12-13:39:25.675 19949 Compacting 1@0 + 1@1 files
+2026/10/12-13:39:25.681 19949 Generated table #25@0: 189 keys, 192643 bytes
+2026/10/12-13:39:25.681 19949 Compacted 1@0 + 1@1 files => 192643 bytes
+2026/10/12-13:39:25.683 19949 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/10/12-13:39:25.683 19949 Delete type=2 #24
+2026/10/12-13:39:25.683 19949 Manual compaction at level-0 from '\x00\x09\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 1361 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/10/12-13:39:27.005 1994a Level-0 table #27: started
+2026/10/12-13:39:27.008 1994a Level-0 table #27: 139449 bytes OK
+2026/10/12-13:39:27.009 1994a Delete type=2 #21
+2026/10/12-13:39:27.009 1994a Delete type=0 #23
+2026/10/12-13:39:27.010 19949 Manual compaction at level-0 from '\x00\x0a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0a\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 1551 : 1
+2026/10/12-13:39:27.010 19949 Compacting 1@0 + 1@1 files
+2026/10/12-13:39:27.014 19949 Generated table #28@0: 196 keys, 244451 bytes
+2026/10/12-13:39:27.015 19949 Compacted 1@0 + 1@1 files => 244451 bytes
+2026/10/12-13:39:27.017 19949 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/10/12-13:39:27.017 19949 Delete type=2 #27
+2026/10/12-13:39:27.017 19949 Manual compaction at level-0 from '\x00\x0a\x01\x03\x03\x00\x00\x00\x00\x00\x00\xf0?' @ 1551 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at (end)
